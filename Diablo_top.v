@@ -83,7 +83,7 @@ module Diablo_top (
     output wire HEAD_SELECT_L,  // Head Select
     
     // this is Diablo READ GATE
-    output wire RD_GATE_L,      // Read gate, when active enables read circuitry
+    output wire RD_GATE_L,      // Read gate, when high enables read circuitry
     
     // this is Diablo TRACK ADDRESS
     output wire [7:0] TRACK,
@@ -106,10 +106,10 @@ module Diablo_top (
     output wire led3_b,                 // LD blue
     output wire led3_g,                 // LD green
     output wire led3_r,                 // LD red
-    output wire led1,                   // LD 7
-    output wire led2,                   // LD 6
-    output wire led3,                   // LD 5
-    output wire led4                    // LD 4
+    output wire led4,                   // LD 7
+    output wire led5,                   // LD 6
+    output wire led6,                   // LD 5
+    output wire led7                    // LD 4
 
 );
 
@@ -162,7 +162,7 @@ assign dramWord_Number = slideswitch == 1'b0
                          ?  Word_Number
                          :  word_address;
 
-assign HEAD_SELECT_L = Head_Select;
+assign HEAD_SELECT_L = ~Head_Select;     // turn on to assert
 
 assign extract_cartridge = button0 && 
                            READY_SEEK_L == 1'b0 && 
@@ -170,12 +170,12 @@ assign extract_cartridge = button0 &&
 
 assign upload_cartridge =  button0 && slideswitch == 1'b1; 
 
-assign led1 = calib_complete;
-assign led2 = slideswitch == 1'b0
+assign led4 = calib_complete;
+assign led5 = slideswitch == 1'b0
                          ?  ~LOG_ADDR_INLK
                          :  dumpdone;
-assign led3 = ~SEEK_INCOMP;
-assign led4 = alldone;
+assign led6 = ~SEEK_INCOMP;
+assign led7 = alldone;
 
 assign led0_b = dramSector_Address[1:1];
 assign led0_g = dramSector_Address[0:0];

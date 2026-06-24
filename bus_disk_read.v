@@ -42,6 +42,10 @@ module bus_disk_read(
 `define BRST7 3'd7 // 7 - write sync or ECC error status as word 322  
 reg [2:0] bus_read_state; // read state machine state variable
 
+// define asserted and deasserted state of output signal
+`define ASSERT 1'b1
+`define DEASSERT 1'b0
+
 // IBM 1130 2315 cartridge has 20 bit words, 321 words with no CRC, 4 logical sectors (8 physical)
 // data word is 16 bits, ECC is 1 bits emitted in last four until count mod 4 is 0
 //
@@ -94,7 +98,7 @@ begin : DISKREAD // block name
     sync_word_count <= 8'd0;
     readdata <= 16'd0;
     ECC_count <= 2'd0;
-    RD_GATE_L <= 1'b1;
+    RD_GATE_L <= `DEASSERT;
     syncerror <= 1'b0;
     ECCerror <= 1'b0;
     Word_Number <= 9'd0;
@@ -139,7 +143,7 @@ begin : DISKREAD // block name
       readdata <= 16'd0;
 
       // read gate is off
-      RD_GATE_L <= 1'b1;
+      RD_GATE_L <= `DEASSERT;
       readdone <= 1'b0;
       syncerror <= 1'b0;
       ECCerror <= 1'b0;
@@ -171,7 +175,7 @@ begin : DISKREAD // block name
       wordcount <= 12'd321;
 
       // read gate is on
-      RD_GATE_L <= 1'b0;
+      RD_GATE_L <= `ASSERT;
       readdone <= 1'b0;
       syncerror <= 1'b0;
       ECCerror <= 1'b0;
@@ -200,7 +204,7 @@ begin : DISKREAD // block name
       readdata <= 16'd0;
 
       // read gate is on
-      RD_GATE_L <= 1'b0;
+      RD_GATE_L <= `ASSERT;
       readdone <= 1'b0;
       sync_word_count <= 0;
       grabword <= 1'b0;
@@ -246,7 +250,7 @@ begin : DISKREAD // block name
       readdata <= 16'd0;
 
       // read gate is on
-      RD_GATE_L <= 1'b0;
+      RD_GATE_L <= `ASSERT;
       readdone <= 1'b0;
       grabword <= 1'b0;
       Word_Number <= 9'd0;
@@ -315,7 +319,7 @@ begin : DISKREAD // block name
                   : 1'b0;
 
       // read gate is on
-      RD_GATE_L <= 1'b0;
+      RD_GATE_L <= `ASSERT;
       readdone <= 1'b0;
 
      end
@@ -340,7 +344,7 @@ begin : DISKREAD // block name
       grabword <= 1'b0;
 
       // read gate is off
-      RD_GATE_L <= 1'b1;
+      RD_GATE_L <= `DEASSERT;
       readdone <= 1'b1;
 
      end
@@ -358,7 +362,7 @@ begin : DISKREAD // block name
       grabword <= 1'b0;
       bus_read_count <= 8'd0;
       readdata <= 16'd0;
-      RD_GATE_L <= 1'b1;
+      RD_GATE_L <= `DEASSERT;
       readdone <= 1'b0;
 
      end
@@ -379,7 +383,7 @@ begin : DISKREAD // block name
       readdata <=       bitready
                         ? {syncerror, ECCerror, 1'b1, 13'b0}
                         : readdata;
-      RD_GATE_L <= 1'b1;
+      RD_GATE_L <= `DEASSERT;
       readdone <= 1'b0;
 
      end

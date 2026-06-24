@@ -24,10 +24,10 @@ set_property -dict { PACKAGE_PIN H6    IOSTANDARD LVCMOS33 } [get_ports { led3_g
 set_property -dict { PACKAGE_PIN K1    IOSTANDARD LVCMOS33 } [get_ports { led3_r }]; #IO_L23N_T3_35 Sch=led3_r
 
 ## LEDs
-set_property -dict { PACKAGE_PIN H5    IOSTANDARD LVCMOS33 } [get_ports { led4 }]; #IO_L24N_T3_35 Sch=led[4]
-set_property -dict { PACKAGE_PIN J5    IOSTANDARD LVCMOS33 } [get_ports { led3 }]; #IO_25_35 Sch=led[5]
-set_property -dict { PACKAGE_PIN T9    IOSTANDARD LVCMOS33 } [get_ports { led2 }]; #IO_L24P_T3_A01_D17_14 Sch=led[6]
-set_property -dict { PACKAGE_PIN T10   IOSTANDARD LVCMOS33 } [get_ports { led1 }]; #IO_L24N_T3_A00_D16_14 Sch=led[7]
+set_property -dict { PACKAGE_PIN H5    IOSTANDARD LVCMOS33 } [get_ports { led7 }]; #IO_L24N_T3_35 Sch=led[4]
+set_property -dict { PACKAGE_PIN J5    IOSTANDARD LVCMOS33 } [get_ports { led6 }]; #IO_25_35 Sch=led[5]
+set_property -dict { PACKAGE_PIN T9    IOSTANDARD LVCMOS33 } [get_ports { led5 }]; #IO_L24P_T3_A01_D17_14 Sch=led[6]
+set_property -dict { PACKAGE_PIN T10   IOSTANDARD LVCMOS33 } [get_ports { led4 }]; #IO_L24N_T3_A00_D16_14 Sch=led[7]
 
 ## Buttons
 set_property -dict { PACKAGE_PIN D9    IOSTANDARD LVCMOS33 } [get_ports { button0 }]; #IO_L6N_T0_VREF_16 Sch=btn[0]

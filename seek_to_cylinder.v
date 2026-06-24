@@ -24,7 +24,7 @@ module seek_to_cylinder(
     input wire ADDR_ACK,               // Diablo accepted seek request
     input wire READY_SEEK_L,           // Diablo able to perform a seek
 
-    output reg STROBE_L,     // strobe to enable movement of the heads when low
+    output reg STROBE_L,               // strobe to enable movement of the heads when low
     output reg [7:0] TRACK,            // command to Diablo for target cylinder
     output reg [7:0] Cylinder_Address  // internal register to store the valid cylinder address
 );
@@ -37,14 +37,18 @@ module seek_to_cylinder(
     reg [9:0] countdown;        // hold STROBE pulse for 3 us after ADDR ACK
     reg [2:0] seek_state;       // state machine variable
     
-    // state definitions and values for seeking
+// state definitions and values for seeking
 `define S0 3'd0 // 0 - idle
 `define S1 3'd1 // 1 - set up the target track
 `define S2 3'd2 // 2 - request STROBE, wait for ADDR ACK
 `define S3 3'd3 // 3 - prepare to drop STROBE
 `define S4 3'd4 // 4 - wait for READY_SEEK_L to restore
 
-
+// defines for logic level of asseert and deassert
+`define ASSERT 1'b1
+`define DEASSERT 1'b0
+`define NOTRACK 8'b00000000
+    
 //============================ Start of Code =========================================
 
 always @ (posedge clock)
@@ -52,9 +56,9 @@ begin
 
     if(reset == 1'b1) begin
         Cylinder_Address <= 8'd0;
-        STROBE_L <= 1'b1;
+        STROBE_L <= `DEASSERT;
         countdown <= 10'd0;
-        TRACK <= 8'b11111111;
+        TRACK <= `NOTRACK;
         seek_state <= `S0;
     end
     else begin
@@ -64,7 +68,7 @@ begin
     `S0: begin   
     
          // no request to move the arm
-         STROBE_L <= 1'b1;
+         STROBE_L <= `ASSERT;
             
          // when strobe activated, bump cylinder location
          Cylinder_Address <= (strobe_move == 1'b1) 
@@ -84,8 +88,8 @@ begin
 // set up the target track and let the signals settle
    `S1: begin
            
-        // invert cylinder we want and send to drive
-        TRACK <= ~Cylinder_Address;
+        // send cylinder we want to drive
+        TRACK <= Cylinder_Address;
                 
         // move forward next cycle
         seek_state <= `S2;
@@ -95,7 +99,7 @@ begin
    `S2: begin
    
         // we request a seek
-        STROBE_L <= 1'b0;
+        STROBE_L <= `ASSERT;
                 
         // set up counter to wait 3 us
         countdown <= 10'd300;
@@ -110,7 +114,7 @@ begin
    `S3: begin
    
         // continue to hold STROBE_L active
-        STROBE_L <= 1'b0;
+        STROBE_L <= `ASSERT;
         
         // count it off
         countdown <= (countdown == 10'd0)
@@ -124,7 +128,7 @@ begin
               
         // drop TRACK when the count expires
         TRACK <= (countdown == 10'd0)
-              ?   8'b11111111
+              ?   `NOTRACK
               :   TRACK;
               
         end
@@ -133,7 +137,7 @@ begin
    `S4: begin
    
         // we deassert STROBE and wait for the move to finish
-        STROBE_L <= 1'b1;
+        STROBE_L <= `DEASSERT;
    
         // go back to idle when the drive completes the seek
         seek_state <= (READY_SEEK_L == 1'b0)
@@ -143,6 +147,7 @@ begin
         
     default: begin
       seek_state <= `S0;
+      STROBE_L <= `DEASSERT;
     end
 
     endcase
