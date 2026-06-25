@@ -1,0 +1,27 @@
+#,QUANTITY,VENDOR,DESCRIPTION,UNIT PRICE,EXTENDED PRICE,PART NUMBER,MANUFACTURER PART NUMBER
+1,20,Digikey,TRANS NPN 15V 0.2A SOT23-3,$0.12 ,$2.40 ,MMBT2369ALT1GOSCT-ND,MMBT2369ALT1G
+2,20,Digikey,RES 330 OHM 5% 1/4W 0603,$0.09 ,$1.70 ,10-ERJ-UP3J331VCT-ND,ERJ-UP3J331V
+3,10,Digikey,IC BUFF 1.65V 14-SO,$0.23 ,$2.33 ,74LVC125AS14-13DICT-ND,74LVC125AS14-13
+4,2,Digikey,CONN HEADER VERT 16POS 2.54MM,$5.56 ,$11.12 ,612-TD-108-G-A-ND,TD-108-G-A
+5,1,Digikey,IC REG LINEAR 3.3V 800MA SOT-223,$1.57 ,$1.57 ,LM1117MP-3.3/NOPBCT-ND,LM1117MP-3.3/NOPB
+6,1,Digikey,CONN HEADER VERT 50POS 1.27MM,$2.79 ,$2.79 ,2057-HBHR-A1-50-VG-HT-ND,HBHR-A1-50-VG-HT
+7,5,Digikey,CAP TANT 10UF 10% 16V 1206,$0.47 ,$2.35 ,478-8235-1-ND,F931C106KAA
+8,5,Digikey,CAP TANT 0.33UF 20% 20V 0805,$0.34 ,$1.70 ,718-2503-1-ND,TMCP1D334MTRF
+9,5,Digikey,CAP TANT 0.1UF 10% 20V 1206,$0.89 ,$4.45 ,478-TAJS104K020RNJCT-ND,TAJS104K020RNJ
+10,1,Digikey,CONN POWER JACK SOLDER 2.5MM,$1.02 ,$1.02 ,2092-KLDHCX-0202-BC-1-ND,KLDHCX-0202-BC-1
+11,2,Digikey,CONN HEADER VERT 2POS 2.54MM,$0.68 ,$1.36 ,612-TS-102-T-A-ND,TS-102-T-A
+12,25,Digikey,RES SMD 10K OHM 1% 1/10W 0603,$0.02 ,$0.38 ,CR0603-FX-1002ELFCT-ND,CR0603-FX-1002ELF
+13,10,Digikey,RES SMD 120 OHM 5% 1/3W 0603,$0.06 ,$0.58 ,P120BZCT-ND,ERJ-PA3J121V
+14,25,Digikey,RES 300 OHM 5% 1/3W 0603,$0.05 ,$1.36 ,RHM300DCT-ND,ESR03EZPJ301
+15,0.08333,Amazon,LM7805CV  voltage regulator,$6.41 ,$0.53 ,https://www.amazon.com/dp/B0C5M51R2Z?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1,
+16,1,Amazon,IDC 50 pin cable, 50cm long,$10.69 ,$10.69 ,https://www.amazon.com/dp/B07S9KRBDV?ref=ppx_yo2ov_dt_b_fed_asin_title,
+17,1,?,Diablo terminator,,,collectors or ebaty,
+18,1,?,Diablo model 31 standard density,,,collectors or ebaty,
+19,1,Digilent.com,Artix S7 FPGA board,$127.33 ,$127.33 ,https://digilent.com/shop/arty-s7-spartan-7-fpga-development-board/,
+20,1,Amazon,9V power supply wallwart,$9.62 ,$9.62 ,https://www.amazon.com/dp/B087ZWS7CG?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1,
+21,1,PCBway,PCB manufactured from design,$174.99 ,$174.99 ,,
+22,2,Amazon,Meanwell 15V 7A PS bought as pair,$19.71 ,$39.42 ,https://www.amazon.com/dp/B0CCYL43VT?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1,
+23,1,Amazon,Dual +/- 15V 2A supply,$30.17 ,$30.17 ,https://www.amazon.com/Output-Switching-Converter-Computer-24V1-6-24V1-6A/dp/B0DSFLLWTV/ref=sr_1_14?crid=3QJWWJ7D1OTHV&dib=eyJ2IjoiMSJ9.6uudUypDf6cKzfvgHaAN1_bMIDsS7YnN-_K3YyanBdMCvZh06lnOoxifjuFOgsddrjLVvi2Qm1KqdE6egNZsj3qx55x1_E7ehlLYHpZpxtXjMXxvMX9VfqIfMCcx1JVYSHVX_CrVLxNwIkVe5LGvvxF6qwpTQ8_NBRLvtEaitGxjinAEehbO_rCoulPbC3AOaDnjfRF01qkg8FhgjEAXnolbZ8Ts7CCeevm2cegRW_0.olwcYp1c6O6Y1__8mBzgMoOjVFxhqd7RyCasr6ZtciI&dib_tag=se&keywords=15VDC%2Bdual%2Bpower%2Bsupply&qid=1782243130&sprefix=15vdc%2Bdual%2Bpower%2Bsupply%2Caps%2C263&sr=8-14&th=1,
+,,,,,,,
+,,,,,,,
+,,,,Total,$427.86 ,,
